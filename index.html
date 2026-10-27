@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Cafe Recorder</title>
+    <link rel="stylesheet" href="myapp.css" />
+  
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/ja.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  </head>
+  <body>
+    <h1>My Cafe Recorder☕</h1>
+    <button id="btn-new" class="new">新しくお店を追加</button>
+    
+    <form id="cafe-form-card" class="cafe-card input-card">
+    <input type="text" id="input-name" placeholder="カフェの名前">
+    <input type="text" id="input-station" placeholder="最寄り駅">
+    <label>
+      <input type="checkbox" id="input-visited"> 行ったお店
+    </label>
+
+    <input type="text" id="input-drink" placeholder="注文した飲み物">
+
+    <input type="text" id="input-menu" placeholder="食べたもの">
+    <textarea id="input-comment" placeholder="感想やコメント"></textarea>
+    
+    <div class="form-row">
+      <label for="input-score">評価：</label>
+      <select id="input-score">
+        <option value="0">--行きたいお店--</option>
+        <option value="5">⭐⭐⭐⭐⭐ 星5</option>
+        <option value="4">⭐⭐⭐⭐ 星４</option>
+        <option value="3">⭐⭐⭐ 星３</option>
+        <option value="2">⭐⭐ 星２</option>
+        <option value="1">⭐ 星１</option>
+      </select>
+    </div>
+
+    <input type="url" id="input-map" placeholder="GoogleMapのリンク">
+    <input type="url" id="input-insta" placeholder="Instagramのリンク">
+
+    <div class="form-row">
+      <label for="input-image">写真：</label>
+    <input type="file" id="input-image" accept="image/*">
+    </div>
+
+    <button id="btn-save">保存</button>
+  </form>
+    
+    <div class="tab-container">
+      <button id="btn-all" class="tab-btn">すべてのカフェ</button>
+      <button id="btn-visited" class="tab-btn">行ったお店</button>
+      <button id="btn-want" class="tab-btn">行きたいお店</button>
+
+      <button id="btn-sort" class="sort">評価が高い順に並び替え</button>
+    </div>
+    
+    <div id="cafelist"></div>
+
+
+    <script src="data.js"></script>
+    <script src="myapp.js"></script>
+    <!--bodyタグ内にscriptを入れないと、認識されないため、bodyタグ内にscriptを配置-->
+  </body>
+</html>
