@@ -1,0 +1,235 @@
+/*
+タグ名で指定　そのままタグ名｛｝
+ID指定　＃ID｛｝
+クラス名　.クラス名｛｝
+*/
+
+/*
+そのカード上にHoverしたときに色変わるようにしたい
+*/
+
+body {
+    margin: 10 auto;
+}
+
+h1 {
+    color: chocolate;
+}
+
+#btn-new {
+    display: flex;
+    padding: 5px 5px;
+    background-color: #d4a373; 
+    border-radius: 6px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+
+/* マウスを保存ボタンに乗せたときに少し色を変える */
+#btn-new:hover {
+    background-color: #bc6c25; 
+}
+
+/* タブ */
+.tab-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    display: flex;
+    padding: 0.5em 1.2em;
+    border: 2px solid burlywood;
+    background-color: burlywood;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+/* マウスを乗せたときの色変化 */
+.tab-btn:hover {
+    background-color: rgb(218, 110, 22);
+}
+
+#btn-sort {
+    margin-left: auto; /*自動で余白を限界まで広げる */
+    display: flex;
+    padding: 5px 5px;
+    background-color: #d4a373; 
+    border-radius: 6px ;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+
+
+/* マウスを保存ボタンに乗せたときに少し色を変える */
+#btn-sort:hover {
+    background-color: #bc6c25; 
+}
+
+/*HTMLの中でID指定*/
+#cafelist {
+    display: flex;
+    flex-wrap: wrap; /*折り返しを有効にする*/
+    gap:16px; /*カード同士の隙間を開ける*/
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 1. 大元のカード全体のデザイン（枠線をつける、角を丸くするなど） */
+.cafe-card {
+    display: flex; /*中の要素を横並びにする*/
+    align-items: flex-start; /*各カードの上は時からをそろえる*/
+    gap: 20px; /*文字列間の隙間*/
+
+    width: 100%;
+    box-sizing: border-box;
+    border: 5px solid #ccc; /* 枠線 */
+    border-radius: 8px;     /* 角を丸く */
+    padding: 16px;          /* 内側の余白 */
+    margin-bottom: 16px;    /* カード同士の上下の隙間 */
+    background-color: #fff; /* 背景色を白に */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 軽く影をつける */
+    transition: background-color 0.2s ease, border-color 0.2s ease; /* 色が変わるときに滑らかに変化させる */
+}
+
+/* 2. 画面が広い（全画面など、横幅が 768px 以上）ときだけ横並び（2列）にする */
+@media (min-width: 768px) {
+    .cafe-card {
+        width: calc(50% - 8px); /* ★全画面のときだけ横幅を半分にして2列にする */
+    }
+}
+
+/* カードの上にマウスを乗せた（ホバーした）ときの色変更 */
+.cafe-card:hover {
+    background-color: rosybrown; 
+    border-color: wheat;    /* マウスを乗せたときの枠線の色 */
+}
+
+/* 2. 店名（h2）のデザイン */
+.cafe-card h2 {
+    font-size: 24px;
+    margin-top: 0;
+    color: #333;
+}
+
+/* 3. 最寄駅のデザイン */
+.cafe-card .station {
+    font-weight: bold;
+    color: #666;
+}
+
+/* 4. コメントのデザイン */
+.cafe-card .comment {
+    color: #444;
+    line-height: 2;
+}
+
+/* 5. Google Map リンクのデザイン */
+/* ① 共通の部分をまとめて書く */
+.cafe-card .map-link,
+.cafe-card .insta-link {
+    display: block; /*aタグはインライン要素のため、ブロック要素として改行するようにする　
+    これつけないとそのまま２つのリンクがくっついて表示される*/
+    margin-top: 8px;
+    text-decoration: none;
+}
+
+/* ② ホバーしたときの共通部分もまとめて書く */
+.cafe-card .map-link:hover,
+.cafe-card .insta-link:hover {
+    text-decoration: underline;
+}
+
+/* ③ 違う部分（色）だけをそれぞれの場所で指定する */
+.cafe-card .map-link {
+    color: #0066cc; 
+}
+
+.cafe-card .insta-link {
+    color: #cc00cc; 
+}
+
+.images {
+    margin-left: auto; /*左は時からの余白を自動で最大にして、右端に表示*/
+}
+
+.images img {
+    display: flex;
+    width:250px;
+    height: 250px;
+    object-fit: cover; /*画像がゆがまないようにする*/
+    border-radius: 25%;
+    border: solid;
+}
+
+#cafe-form-card {
+    display: none; /*ボタン押さない限り非表示*/
+    flex-direction: column;
+    align-items: flex-start; /*各カードの上は時からをそろえる*/
+    gap: 20px; /*文字列間の隙間*/
+    padding: 20px;
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+}
+
+/* すべての入力欄・セレクトボックス・テキストエリアの大きさや幅を統一する */
+#cafe-form-card input[type="text"],
+#cafe-form-card input[type="url"],
+#cafe-form-card textarea,
+#cafe-form-card select {
+    width: 100%;           
+    padding: 7px 10px;     /* 内側の余白（高さを出す） */
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; /* 枠線を含めて幅を計算させる */
+}
+
+/* テキストエリアは少し高さを持たせる */
+#cafe-form-card textarea {
+    height: 50px;
+    resize: vertical; /* 縦方向だけにサイズ変更できるようにする */
+}
+
+/* 「評価：」や「写真：」の横並びパーツをきれいに配置する行 */
+.form-row {
+    display: flex;
+    align-items: center;    /* 縦の中央を合わせる */
+    gap: 10px;              /* 文字と入力部品の間の隙間 */
+}
+
+/* 保存ボタンの見た目を整える */
+#btn-save {
+    padding: 5px 5px;
+    background-color: #d4a373; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 8px;
+}
+
+/* マウスを保存ボタンに乗せたときに少し色を変える */
+#btn-save:hover {
+    background-color: #bc6c25; 
+}
